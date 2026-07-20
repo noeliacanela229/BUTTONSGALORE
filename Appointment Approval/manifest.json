@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "HappyFox Open Review",
+  "version": "2.76",
+  "permissions": [
+    "tabs",
+    "downloads",
+    "scripting",
+    "clipboardWrite",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://rvcs.happyfox.com/*",
+    "https://app.yassi.com/*",
+    "https://vpic.nhtsa.dot.gov/*",
+    "https://*.lightning.force.com/*",
+    "https://*.salesforce.com/*",
+    "https://secure.dol.wa.gov/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://rvcs.happyfox.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://secure.dol.wa.gov/*"
+      ],
+      "all_frames": true,
+      "js": [
+        "wa-autologin.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "html2canvas.min.js"
+      ],
+      "matches": [
+        "https://vpic.nhtsa.dot.gov/*"
+      ]
+    }
+  ]
+}

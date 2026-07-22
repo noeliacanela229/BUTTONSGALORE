@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: system-ui, sans-serif; width: 260px; padding: 12px; }
+    label { display: block; font-size: 12px; margin-bottom: 4px; color: #333; }
+    input { width: 100%; box-sizing: border-box; padding: 6px; margin-bottom: 10px; }
+    button { width: 100%; padding: 8px; background: #1c3f94; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 6px; }
+    button:hover { background: #16337a; }
+    #saveCreds { background: #555; }
+    #saveCreds:hover { background: #444; }
+    #status { font-size: 12px; margin-top: 8px; color: #555; min-height: 14px; }
+    details { margin-bottom: 12px; }
+    summary { cursor: pointer; font-size: 12px; color: #1c3f94; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <button id="start">Open Dealertrack</button>
+  <p style="font-size: 11px; color: #777; margin: -4px 0 12px;">
+    Once you're on the payoff page, use the "Auto Payoff Quote" button there — it pulls the VIN and lender straight from your open HappyFox ticket.
+  </p>
+
+  <details>
+    <summary>Dealertrack login (set once)</summary>
+    <label for="username">Username</label>
+    <input type="text" id="username">
+    <label for="password">Password</label>
+    <input type="password" id="password">
+    <button id="saveCreds">Save Login</button>
+  </details>
+
+  <div id="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

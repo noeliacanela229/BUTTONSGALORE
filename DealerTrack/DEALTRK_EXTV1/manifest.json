@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Dealertrack Payoff Quote Automator",
+  "version": "0.1.0",
+  "description": "One-click Dealertrack login + payoff quote lookup",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": [
+    "https://signin.coxautoinc.com/*",
+    "https://*.dealertrack.app.coxautoinc.com/*",
+    "https://rvcs.happyfox.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Dealertrack Payoff Quote"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://signin.coxautoinc.com/*"],
+      "js": ["content-login.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.dealertrack.app.coxautoinc.com/*"],
+      "js": ["lender-matcher.js", "content-dealertrack.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://rvcs.happyfox.com/staff/ticket/*"],
+      "js": ["lender-matcher.js", "content-happyfox.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
